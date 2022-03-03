@@ -1,0 +1,15 @@
+[build]
+target = "wasm32-unknown-emscripten"
+
+[target.wasm32-unknown-emscripten]
+linker = "em++"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+
+[profile.dev]
+panic = "abort"
+
+[unstable]
+build-std = ["panic_abort", "std"]

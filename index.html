@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Rust WebAssembly example</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</head>
+	<body>
+		<div id="terminal"></div>
+		<script>
+			let term = new Terminal();
+			term.open(document.getElementById('terminal'));
+			var Module = {
+				print: (...texts) => {
+					let text = texts.join(' ');
+					term.write(`${text}\r\n`);
+					//element.innerHTML += text + "<br>";
+					console.log(text);
+				},
+				printErr: (...texts) => {
+					let text = texts.join(' ');
+                    console.error(text);
+				}
+			};
+		</script>
+		<script src="target/wasm32-unknown-emscripten/release/example.js"></script>
+	</body>
+</html>
