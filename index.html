@@ -5,11 +5,13 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<style>
 			body {
-				display: grid;
-				grid-template-columns: auto 0;
-				grid-template-rows: auto 0;
-				align-content: center;
+				display: flex;
+				align-items: center;
 				justify-content: center;
+				min-width: max-content;
+				min-height: max-content;
+				margin: 0;
+				padding: 8px;
 				background: #666;
 			}
 			#terminal {
@@ -28,12 +30,12 @@
 			var Module = {
 				print: (...texts) => {
 					let text = texts.join(' ');
-					term.write(`${text}\r\n`);
-					//element.innerHTML += text + "<br>";
+					term.writeln(text);
 					console.log(text);
 				},
 				printErr: (...texts) => {
 					let text = texts.join(' ');
+					term.writeln(text);
                     console.error(text);
 				}
 			};
